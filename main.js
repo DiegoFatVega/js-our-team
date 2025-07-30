@@ -50,16 +50,16 @@ for (let i = 0; i < teamMembers.length; i++) {
     //generiamo i markup
    const cardMarkupString = `
    <div class="col-md-4 mb-3">
-    <div class="card text-bg-dark" style="max-width: 540px;">
+    <div class="card text-bg-dark rounded-0 " style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="${member.img}" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-8">
-                <div class="card-body">
+                <div class="card-body py-0">
                     <h5 class="card-title">${member.name}</h5>
                     <p class="card-text"> ${member.role}</p>
-                    <p class="card-text"> ${member.email}</p>
+                    <p class="text-primary"> ${member.email}</p>
                 </div>
             </div>
         </div>
