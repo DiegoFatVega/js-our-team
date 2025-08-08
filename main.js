@@ -39,16 +39,38 @@ const teamMembers = [
 
 console.log(teamMembers);
 
-//seleziono i nodi della dom
-const rowEL = document.getElementById('team');
+createCard(teamMembers);
+//form section
 
-//ciclo all`interno dell`array
-for (let i = 0; i < teamMembers.length; i++) {
-    //prendo il singolo elemento ad ogni iterazione e lo salvo in una variabile
-    const member = teamMembers[i];
-    
-    //generiamo i markup
-   const cardMarkupString = `
+const nameEl = document.getElementById('formGroupExampleInputName');
+const roleEl = document.getElementById('formGroupExampleInputRole');
+const emailEl = document.getElementById('exampleFormControlInputEmail');
+const formEl = document.querySelector('form'); //non catturare il bottone ma il form
+
+formEl.addEventListener('submit', (event) => {
+    event.preventDefault();
+    ;
+    //strada numero 1: salvo i dati precedentemente selezionati e faccio un push nel`array teamMembers (NON MI AGGIORNA L`ARRAY
+    //PERCHÈ REFERENZIAVO I LABEL E NON GLI INPUT, ANCHE IL PULSANTE E NON IL FORM)
+    /* Creo una card, salvando il metodo precedente in una function e la richiamo qui(se richiamo la funzione, mi aggiunge e duplica tutti gli elememti
+    credo di aver bisogno di creare un altro arrray) */
+    const newMembers = [];
+    newMembers.push({ name: nameEl.value, role: roleEl.value, email: emailEl.value, img: "./assets/img/female2.png" })
+    console.log(newMembers);
+    createCard(newMembers);
+
+})
+
+function createCard(arr) {
+    //ciclo all`interno dell`array
+    for (let i = 0; i < arr.length; i++) {
+        //seleziono i nodi della dom
+        const rowEL = document.getElementById('team');
+        //prendo il singolo elemento ad ogni iterazione e lo salvo in una variabile
+        const member = arr[i];
+
+        //generiamo i markup
+        const cardMarkupString = `
    <div class="col-md-4 mb-3">
     <div class="card text-bg-dark rounded-0 " style="max-width: 540px;">
         <div class="row g-0">
@@ -65,8 +87,7 @@ for (let i = 0; i < teamMembers.length; i++) {
         </div>
     </div>
 </div`
-//appenderlo alla dom
-rowEL.insertAdjacentHTML('beforeend', cardMarkupString);
+        //appenderlo alla dom
+        rowEL.insertAdjacentHTML('beforeend', cardMarkupString);
+    }
 }
-
-

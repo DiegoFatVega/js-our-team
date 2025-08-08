@@ -2,7 +2,7 @@ body{
     Font-family: 'Fredoka', sans-serif;
 }
 
-h1{
+h1,h2{
   color: #e91e63; /* rosa acceso */
   text-align: center;
 }
